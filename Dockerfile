@@ -30,7 +30,6 @@ RUN yum install -y /tmp/jdk-8u151-linux-x64.rpm
 RUN yum install -y /tmp/jre-8u151-linux-x64.rpm
 
 RUN export JAVA_HOME=/usr/java/jdk1.8.0_151/jre/
-ENV JAVA_HOME=/usr/java/jdk1.8.0_151/
 
 # hadoop client
 RUN wget https://archive.cloudera.com/cdh5/redhat/7/x86_64/cdh/cloudera-cdh5.repo -O /etc/yum.repos.d/cloudera-cdh5.repo
@@ -43,3 +42,16 @@ RUN yum clean all; \
 
 # hue
 RUN yum install -y hue; yum clean all
+
+ENV HUE_HOME=/usr/lib/hue/build/env/
+ENV JAVA_HOME=/usr/java/jdk1.8.0_151/
+
+ENV HUE_CONF_DIR=/etc/hue/conf
+ENV HADOOP_CONF_DIR=/etc/hadoop/conf
+
+#
+EXPOSE 8080
+VOLUME /etc/hue/conf
+VOLUME /etc/hadoop/conf
+
+CMD ["$HUE_HOME/bin/hue", "runserver_plus", "0.0.0.0:8080"]

@@ -1,8 +1,6 @@
-FROM binarycat/cx_oracle
+FROM binarycat/cx_oracle_instantclient_11.2
 
 RUN yum install -y wget\
-    gcc \
-    python-devel \
     postgresql \
     postgresql-devel \
     mysql \

@@ -13,7 +13,7 @@ RUN yum clean all
 RUN python -m pip install psycopg2
 RUN python -m pip install mysql
 RUN python -m pip install sqlalchemy
-
+RUN python -m pip install Werkzeug
 
 # java
 RUN wget -c \

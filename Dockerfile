@@ -1,12 +1,10 @@
-FROM binarycat/cx_oracle_instantclient_11.2
+FROM binarycat/cx_oracle:5
 
 RUN yum install -y wget\
     postgresql \
     postgresql-devel \
     mysql \
     mysql-devel
-
-RUN yum clean all
 
 RUN python -m pip install psycopg2
 RUN python -m pip install mysql
@@ -34,12 +32,11 @@ RUN wget https://archive.cloudera.com/cdh5/redhat/7/x86_64/cdh/cloudera-cdh5.rep
 RUN wget https://archive.cloudera.com/cm5/redhat/7/x86_64/cm/cloudera-manager.repo -O /etc/yum.repos.d/cloudera-manager.repo
 RUN rpm --import https://archive.cloudera.com/cdh5/redhat/7/x86_64/cdh/RPM-GPG-KEY-cloudera
 
-RUN yum clean all; \
-    yum install -y hadoop-client \
-    hadoop-yarn-resourcemanager
+RUN yum install -y hadoop-client
 
 # hue
-RUN yum install -y hue; yum clean all
+RUN yum install -y hue; \
+    yum clean all
 
 ENV HUE_HOME=/usr/lib/hue/build/env/
 ENV JAVA_HOME=/usr/java/jdk1.8.0_151/

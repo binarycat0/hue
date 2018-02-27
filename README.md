@@ -1,5 +1,12 @@
-# hue
-cloudera hue with psycopg, cx_oracle, mysql, hadoop client
+# Hue
+Cloudera hue with psycopg, cx_oracle, mysql, hadoop client
+- http://gethue.com/
+
+## Docker image
+[docker pull binarycat/hue:latest](https://hub.docker.com/r/binarycat/hue/)
+
+## Example
+[git clone https://github.com/catbinary/hue_example.git](https://github.com/catbinary/hue_example/tree/master)
 
 ## Dockerfile
 ```yaml
@@ -42,8 +49,6 @@ ENV HADOOP_CONF_DIR=/etc/hadoop/conf
 
 #
 EXPOSE 8080
-VOLUME /etc/hue/conf
-VOLUME /etc/hadoop/conf
 
 CMD ["$HUE_HOME/bin/hue", "runserver_plus", "0.0.0.0:8080"]
 ```

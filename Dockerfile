@@ -37,7 +37,4 @@ ENV HADOOP_CONF_DIR=/etc/hadoop/conf
 
 #
 EXPOSE 8080
-VOLUME /etc/hue/conf
-VOLUME /etc/hadoop/conf
-
 CMD ["$HUE_HOME/bin/hue", "runserver_plus", "0.0.0.0:8080"]
